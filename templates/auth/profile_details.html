@@ -6,56 +6,58 @@
         <!-- The Grid -->
         <div class="w3-row">
 
-                <img src="{{ profile.photo.url }} " alt="description">
+            <img src="{{ profile.photo.url }} " alt="description">
 
-            </div>
-            <div class="d-inline p-2 w-50">
-
-
-                <div class="d-flex flex-column">
-                    <h5><u>Име:</u> {{ profile.first_name }} {{ profile.last_name }} </h5>
-                    <h5><u>от</u> {{ profile.region }} </h5>
-                    {% if profile.place %}
-                        <h5><u>Живея в: </u> {{ profile.place }}</h5>
-                    {% endif %}
-                    {% if profile.phone_number %}
-                        <h5><u>Чуй ме на: </u> {{ profile.phone_number }}</h5>
-                    {% endif %}
-                    {% if profile.email %}
-                        <h5><u>Пиши ми на: </u> {{ profile.email }}</h5>
-                    {% endif %}
-
-                    {% if profile.description %}
-                        <h5><u>За мен:</u> {{ profile.description }}</h5>
-                    {% endif %}
-                </div>
-
-                    {% if is_me %}
-                        <a href="{% url 'edit profile' profile.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Промени се</a>
-                        <a href="{% url 'delete user' profile.user.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Премахни се</a>
-
-                    {% endif %}
-{#<br>#}
-{#    <br>#}
-{#    <h2 class="text-center">Моите разкази</h2>#}
-{#    <div class="container mb-4">#}
-{#        <div class="d-flex justify-content-start mb-5">#}
-{#            {% for post in posts %}#}
-{#                <div style="width: 18rem;">#}
-{#                    <img src="{{ post.photo.url }}" width="200" height="300">#}
-{#                    <h5>{{ post.content }}</h5>#}
-{##}
-{#                    {% if is_owner %}#}
-{#                        <a href="{% url 'edit post' post.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Промени</a>#}
-{#                        <a href="{% url 'delete post' post.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Премахни</a>#}
-{#                    {% endif %}#}
-{##}
-{#                </div>#}
-{#            {% endfor %}#}
-{#        </div>#}
-{#    </div>#}
-           </div>
         </div>
+        <div class="d-inline p-2 w-50">
+
+
+            <div class="d-flex flex-column">
+                <h5><u>Име:</u> {{ profile.first_name }} {{ profile.last_name }} </h5>
+                <h5><u>от</u> {{ profile.region }} </h5>
+                {% if profile.place %}
+                    <h5><u>Живея в: </u> {{ profile.place }}</h5>
+                {% endif %}
+                {% if profile.phone_number %}
+                    <h5><u>Чуй ме на: </u> {{ profile.phone_number }}</h5>
+                {% endif %}
+                {% if profile.email %}
+                    <h5><u>Пиши ми на: </u> {{ profile.email }}</h5>
+                {% endif %}
+
+                {% if profile.description %}
+                    <h5><u>За мен:</u> {{ profile.description }}</h5>
+                {% endif %}
+            </div>
+
+            {% if is_me %}
+                <a href="{% url 'edit profile' profile.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Промени
+                    се</a>
+                <a href="{% url 'delete user' profile.user.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Премахни
+                    се</a>
+
+            {% endif %}
+            {#<br>#}
+            {#    <br>#}
+            {#    <h2 class="text-center">Моите разкази</h2>#}
+            {#    <div class="container mb-4">#}
+            {#        <div class="d-flex justify-content-start mb-5">#}
+            {#            {% for post in posts %}#}
+            {#                <div style="width: 18rem;">#}
+            {#                    <img src="{{ post.photo.url }}" width="200" height="300">#}
+            {#                    <h5>{{ post.content }}</h5>#}
+            {##}
+            {#                    {% if is_owner %}#}
+            {#                        <a href="{% url 'edit post' post.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Промени</a>#}
+            {#                        <a href="{% url 'delete post' post.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Премахни</a>#}
+            {#                    {% endif %}#}
+            {##}
+            {#                </div>#}
+            {#            {% endfor %}#}
+            {#        </div>#}
+            {#    </div>#}
+        </div>
+    </div>
 
 {% endblock %}
 

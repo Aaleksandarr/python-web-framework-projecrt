@@ -14,15 +14,15 @@ class CreateProfileForm(BootstrapFormMixin, auth_forms.UserCreationForm):
         max_length=Profile.LAST_NAME_MAX_LENGTH,
     )
     region = forms.ChoiceField(choices=[
-                    ("Западно Северняшко", "Западно Северняшко"),
-                    ("Лудогорие", "Лудогорие"),
-                    ("Добруджа", "Добруджа"),
-                    ("Шоплук", "Шоплук"),
-                    ("Тракия", "Тракия"),
-                    ("Македония", "Македония"),
-                    ("Родопа", "Родопа"),
-                    ("Странджа", "Странджа"),
-                ]
+        ("Западно Северняшко", "Западно Северняшко"),
+        ("Лудогорие", "Лудогорие"),
+        ("Добруджа", "Добруджа"),
+        ("Шоплук", "Шоплук"),
+        ("Тракия", "Тракия"),
+        ("Македония", "Македония"),
+        ("Родопа", "Родопа"),
+        ("Странджа", "Странджа"),
+    ]
     )
     email = forms.EmailField()
 
@@ -144,7 +144,6 @@ class EditProfileForm(BootstrapFormMixin, forms.ModelForm):
 
 class DeleteUserForm(forms.ModelForm):
     def save(self, commit=True):
-
         self.instance.posts.all().delete()
         self.instance.delete()
 

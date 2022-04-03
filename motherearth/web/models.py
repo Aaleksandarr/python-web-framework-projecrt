@@ -3,7 +3,6 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from motherearth.auth_app.models import Profile
 
-
 UserModel = get_user_model()
 
 
@@ -124,5 +123,3 @@ class Event(models.Model):
     publication_date = models.DateTimeField(
         auto_now_add=True,
     )
-
-

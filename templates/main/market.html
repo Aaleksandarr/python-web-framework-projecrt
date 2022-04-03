@@ -12,13 +12,13 @@
                     <div class="w3-container">
                         <h4 class="w3-center">{{ user.profile }}</h4>
 
-                        <p class="w3-center"><img src="{{request.user.profile.photo.url}}" class="w3-circle"
+                        <p class="w3-center"><img src="{{ request.user.profile.photo.url }}" class="w3-circle"
                                                   style="height:106px;width:106px" alt="Avatar"></p>
                         <hr>
                         {% if request.user.is_authenticated %}
-                        <p><a href="{% url 'profile details' user.profile.pk%}" > Виж се </a></p>
-                        <p><a href="{% url 'change password' %}" > Промени код </a></p>
-                        <p><a href="{% url 'logout user' %}" > Излез </a></p>
+                            <p><a href="{% url 'profile details' user.profile.pk %}"> Виж се </a></p>
+                            <p><a href="{% url 'change password' %}"> Промени код </a></p>
+                            <p><a href="{% url 'logout user' %}"> Излез </a></p>
                         {% endif %}
                     </div>
                 </div>
@@ -27,33 +27,35 @@
 
                 <div class="w3-card w3-round">
                     <div class="w3-white">
-                        <a class="w3-button w3-block w3-theme-l1 w3-left-align" href="{% url 'create plant' %}" > Създай обява </a>
-                         <a class="w3-button w3-block w3-theme-l1 w3-left-align" href="{% url 'my plants' %}" > Моите обяви </a>
+                        <a class="w3-button w3-block w3-theme-l1 w3-left-align" href="{% url 'create plant' %}"> Създай
+                            обява </a>
+                        <a class="w3-button w3-block w3-theme-l1 w3-left-align" href="{% url 'my plants' %}"> Моите
+                            обяви </a>
 
                     </div>
                 </div>
                 <br>
 
-{#                <!-- Interests -->#}
-{#                <div class="w3-card w3-round w3-white w3-hide-small">#}
-{#                    <div class="w3-container">#}
-{#                        <p>Interests</p>#}
-{#                        <p>#}
-{#                            <span class="w3-tag w3-small w3-theme-d5">News</span>#}
-{#                            <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>#}
-{#                            <span class="w3-tag w3-small w3-theme-d3">Labels</span>#}
-{#                            <span class="w3-tag w3-small w3-theme-d2">Games</span>#}
-{#                            <span class="w3-tag w3-small w3-theme-d1">Friends</span>#}
-{#                            <span class="w3-tag w3-small w3-theme">Games</span>#}
-{#                            <span class="w3-tag w3-small w3-theme-l1">Friends</span>#}
-{#                            <span class="w3-tag w3-small w3-theme-l2">Food</span>#}
-{#                            <span class="w3-tag w3-small w3-theme-l3">Design</span>#}
-{#                            <span class="w3-tag w3-small w3-theme-l4">Art</span>#}
-{#                            <span class="w3-tag w3-small w3-theme-l5">Photos</span>#}
-{#                        </p>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <br>#}
+                {#                <!-- Interests -->#}
+                {#                <div class="w3-card w3-round w3-white w3-hide-small">#}
+                {#                    <div class="w3-container">#}
+                {#                        <p>Interests</p>#}
+                {#                        <p>#}
+                {#                            <span class="w3-tag w3-small w3-theme-d5">News</span>#}
+                {#                            <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>#}
+                {#                            <span class="w3-tag w3-small w3-theme-d3">Labels</span>#}
+                {#                            <span class="w3-tag w3-small w3-theme-d2">Games</span>#}
+                {#                            <span class="w3-tag w3-small w3-theme-d1">Friends</span>#}
+                {#                            <span class="w3-tag w3-small w3-theme">Games</span>#}
+                {#                            <span class="w3-tag w3-small w3-theme-l1">Friends</span>#}
+                {#                            <span class="w3-tag w3-small w3-theme-l2">Food</span>#}
+                {#                            <span class="w3-tag w3-small w3-theme-l3">Design</span>#}
+                {#                            <span class="w3-tag w3-small w3-theme-l4">Art</span>#}
+                {#                            <span class="w3-tag w3-small w3-theme-l5">Photos</span>#}
+                {#                        </p>#}
+                {#                    </div>#}
+                {#                </div>#}
+                {#                <br>#}
 
                 <!-- End Left Column -->
             </div>
@@ -69,28 +71,28 @@
                                 <form method="post">
                                     {% csrf_token %}
                                     <select name="Type">
-                                        <option selected disabled >-- избери тип --</option>
-                                        <option> Семе </option>
-                                        <option> Луковица </option>
-                                        <option> Разсад </option>
-                                        <option> Плод </option>
+                                        <option selected disabled>-- избери тип --</option>
+                                        <option> Семе</option>
+                                        <option> Луковица</option>
+                                        <option> Разсад</option>
+                                        <option> Плод</option>
                                     </select>
-                                       <select name="Kind">
+                                    <select name="Kind">
                                         <option selected disabled>-- избери вид --</option>
-                                        <option> Домат </option>
-                                        <option> Краставица </option>
-                                        <option> Лук </option>
+                                        <option> Домат</option>
+                                        <option> Краставица</option>
+                                        <option> Лук</option>
                                     </select>
                                     <select name="Region">
                                         <option selected disabled>-- избери регион --</option>
-                                        <option> Западно Северняшко </option>
-                                        <option> Лудогорие </option>
-                                        <option> Добруджа </option>
-                                        <option> Шоплук </option>
-                                        <option> Тракия </option>
-                                        <option> Македония </option>
-                                        <option> Родопа </option>
-                                        <option> Странджа </option>
+                                        <option> Западно Северняшко</option>
+                                        <option> Лудогорие</option>
+                                        <option> Добруджа</option>
+                                        <option> Шоплук</option>
+                                        <option> Тракия</option>
+                                        <option> Македония</option>
+                                        <option> Родопа</option>
+                                        <option> Странджа</option>
                                     </select>
                                     <input type="submit" value="Търси">
 
@@ -99,38 +101,41 @@
                         </div>
                     </div>
                 </div>
-            {% if plants %}
-                {% for plant in plants %}
-                    <div class="w3-container w3-card w3-theme-l3 w3-round w3-margin"><br>
+                {% if plants %}
+                    {% for plant in plants %}
+                        <div class="w3-container w3-card w3-theme-l3 w3-round w3-margin"><br>
 
-                        <img src="{{ plant.owner.user.profile.photo.url }}" alt="Avatar" class="w3-left w3-circle w3-margin-right"
-                             style="width:60px"/>
-                        <span class="w3-right w3-opacity">{{ plant.publication_date }}</span>
-                        <h4><a href="{% url 'profile details' plant.owner.user.profile.pk %}"> {{ plant.owner.user.username }}</a></h4><br>
-                        <hr class="w3-clear">
-                        <p>{{ plant.type }} {{ plant.kind }} {{ plant.price }}лв.</p>
-                        <div class="w3-row-padding" style="margin:0 -16px">
-                            <div class="w3-half">
-                            {% if plant.photo %}
-                                <img src="{{ plant.photo.url }}" style="width:100%" alt="Northern Lights"
-                                     class="w3-margin-bottom">
-                            {% endif %}
-                                <a href="{% url 'plant details' plant.pk %}"
-                                   class="w3-button w3-theme-d2 w3-margin-bottom">Виж повече</a>
+                            <img src="{{ plant.owner.user.profile.photo.url }}" alt="Avatar"
+                                 class="w3-left w3-circle w3-margin-right"
+                                 style="width:60px"/>
+                            <span class="w3-right w3-opacity">{{ plant.publication_date }}</span>
+                            <h4>
+                                <a href="{% url 'profile details' plant.owner.user.profile.pk %}"> {{ plant.owner.user.username }}</a>
+                            </h4><br>
+                            <hr class="w3-clear">
+                            <p>{{ plant.type }} {{ plant.kind }} {{ plant.price }}лв.</p>
+                            <div class="w3-row-padding" style="margin:0 -16px">
+                                <div class="w3-half">
+                                    {% if plant.photo %}
+                                        <img src="{{ plant.photo.url }}" style="width:100%" alt="Northern Lights"
+                                             class="w3-margin-bottom">
+                                    {% endif %}
+                                    <a href="{% url 'plant details' plant.pk %}"
+                                       class="w3-button w3-theme-d2 w3-margin-bottom">Виж повече</a>
 
 
+                                </div>
                             </div>
                         </div>
-                    </div>
 
 
-                {% endfor %}
-            {% endif %}
+                    {% endfor %}
+                {% endif %}
                 <!-- End Middle Column -->
             </div>
 
-                <!-- Right Column -->
-                          <div class="w3-col m2">
+            <!-- Right Column -->
+            <div class="w3-col m2">
                 <div class="w3-card w3-round w3-white w3-center">
                     <div class="w3-container">
                         <p>Предстоящи сбирки:</p>
@@ -143,7 +148,7 @@
                     </div>
                 </div>
                 <br>
-{##}
+                {##}
                 <div class="w3-card w3-round w3-white w3-center">
                     <div class="w3-container">
                         <p>Приятелски покани</p>
@@ -171,13 +176,13 @@
                 <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
                     <p><i class="fa fa-bug w3-xxlarge"></i></p>
                 </div>
-                    <div class="w3-top">
-                        <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
-                            <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2"></a>
+                <div class="w3-top">
+                    <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+                        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2"></a>
 
-                        </div>
                     </div>
-                    <!-- End Right Column -->
+                </div>
+                <!-- End Right Column -->
             </div>
             <!-- End Grid -->
         </div>

@@ -6,28 +6,29 @@
         <!-- The Grid -->
         <div class="w3-row">
 
-<br>
-    <br>
-    <h2 class="text-center">Моите разкази</h2>
-    <div class="container mb-4">
-        <div class="d-flex justify-content-start mb-5">
-            {% for post in posts %}
-                <div style="width: 18rem;">
-                {% if post.photo %}
-                    <img src="{{ post.photo.url }}" width="200" height="300">
-                {% endif %}
-                    <h5>{{ post.content }}</h5>
+            <br>
+            <br>
+            <h2 class="text-center">Моите разкази</h2>
+            <div class="container mb-4">
+                <div class="d-flex justify-content-start mb-5">
+                    {% for post in posts %}
+                        <div style="width: 18rem;">
+                            {% if post.photo %}
+                                <img src="{{ post.photo.url }}" width="200" height="300">
+                            {% endif %}
+                            <h5>{{ post.content }}</h5>
 
-                    {% if user %}
-                        <a href="{% url 'edit post' post.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Промени</a>
-                        <a href="{% url 'delete post' post.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Премахни</a>
-                    {% endif %}
+                            {% if user %}
+                                <a href="{% url 'edit post' post.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Промени</a>
+                                <a href="{% url 'delete post' post.pk %}"
+                                   class="w3-button w3-theme-d2 w3-margin-bottom">Премахни</a>
+                            {% endif %}
 
+                        </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
+            </div>
         </div>
     </div>
-           </div>
-        </div>
 
 {% endblock %}

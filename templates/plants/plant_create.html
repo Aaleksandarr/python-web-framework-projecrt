@@ -7,13 +7,13 @@
     </title>
 </head>
 <body>
-    <div>Тук създаваме обява за разстение</div>
-   <form method="post" action="{% url 'create plant' %}" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form }}
-                    <button class="btn btn-primary mt-2" type="submit">Сподели</button>
-                </form>
-
+<div>
+    <form method="post" action="{% url 'create plant' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn btn-primary mt-2" type="submit">Сподели</button>
+    </form>
+</div>
 
 </body>
 </html>

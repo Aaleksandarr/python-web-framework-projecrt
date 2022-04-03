@@ -99,34 +99,38 @@
         .w3-hover-border-theme:hover {
             border-color: #849c8d !important
         }
-                #footer{
-       position:relative;
-       bottom:0;
-       width:100%;
-       height:60px;   /* Height of the footer */
+
+        #footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            height: 60px; /* Height of the footer */
         }
-        #upper{
-   position:relative;
-   bottom:0px;
-   width:100%;
-   height:70px;
+
+        #upper {
+            position: relative;
+            bottom: 0px;
+            width: 100%;
+            height: 70px;
             /* Height of the footer */
-    }
+        }
+
         .containers {
-      position: relative;
-      text-align: center;
-      color: white;
+            position: relative;
+            text-align: center;
+            color: white;
 
-    }
+        }
+
         .text {
-  position: absolute;
-  top: 300px;
-  left: 700px;
-  width: 800px;
-  font-size: large;
-  font-style: initial;
+            position: absolute;
+            top: 300px;
+            left: 700px;
+            width: 800px;
+            font-size: large;
+            font-style: initial;
 
-}
+        }
     </style>
 
 </head>
@@ -134,20 +138,25 @@
 
 <!-- Navbar -->
 {% if user.is_authenticated %}
-<div class="w3-top">
- <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
-  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2"></a>
-        <a href="{% url 'dashboard' %}" class="w3-bar-item w3-button w3-padding-large w3-theme-l4">Седянка</a>
-        <a href="{% url 'community view' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Общност</a>
-        <a href="{% url 'market' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Земеделски Пазар</a>
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Занаятчийница</a>
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Хоремаг</a>
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Сборове и Мегдани</a>
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Благодаря</a>
+    <div class="w3-top">
+        <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+            <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2"></a>
+            <a href="{% url 'dashboard' %}" class="w3-bar-item w3-button w3-padding-large w3-theme-l4">Седянка</a>
+            <a href="{% url 'community view' %}"
+               class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Общност</a>
+            <a href="{% url 'market' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Земеделски
+                Пазар</a>
+            <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Занаятчийница</a>
+            <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Хоремаг</a>
+            <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Сборове и
+                Мегдани</a>
+            <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Благодаря</a>
 
-        <a href="{% url 'profile details' user.id %}" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">
-    <img src="{{ user.profile.photo.url }}" class="w3-circle" style="height:23px;width:23px" alt="Това съм аз"></a>
-</div>
+            <a href="{% url 'profile details' user.id %}"
+               class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">
+                <img src="{{ user.profile.photo.url }}" class="w3-circle" style="height:23px;width:23px"
+                     alt="Това съм аз"></a>
+        </div>
     </div>
 {% endif %}
 
@@ -160,39 +169,39 @@
 
 
 {% if user.id %}
-<!-- Footer -->
-<footer id = upper class="w3-container w3-theme-d3 w3-padding-16 ">
-    <h5>Пазарувай местно!</h5>
-</footer>
+    <!-- Footer -->
+    <footer id=upper class="w3-container w3-theme-d3 w3-padding-16 ">
+        <h5>Пазарувай местно!</h5>
+    </footer>
 
-<footer id = footer class="w3-container w3-theme-d5" >
-    <p align ="center">Майката Земя</p>
-</footer>
+    <footer id=footer class="w3-container w3-theme-d5">
+        <p align="center">Майката Земя</p>
+    </footer>
 
-<script>
-    // Accordion
-    function myFunction(id) {
-        var x = document.getElementById(id);
-        if (x.className.indexOf("w3-show") == -1) {
-            x.className += " w3-show";
-            x.previousElementSibling.className += " w3-theme-d1";
-        } else {
-            x.className = x.className.replace("w3-show", "");
-            x.previousElementSibling.className =
-                x.previousElementSibling.className.replace(" w3-theme-d1", "");
+    <script>
+        // Accordion
+        function myFunction(id) {
+            var x = document.getElementById(id);
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+                x.previousElementSibling.className += " w3-theme-d1";
+            } else {
+                x.className = x.className.replace("w3-show", "");
+                x.previousElementSibling.className =
+                    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+            }
         }
-    }
 
-    // Used to toggle the menu on smaller screens when clicking on the menu button
-    function openNav() {
-        var x = document.getElementById("navDemo");
-        if (x.className.indexOf("w3-show") == -1) {
-            x.className += " w3-show";
-        } else {
-            x.className = x.className.replace(" w3-show", "");
+        // Used to toggle the menu on smaller screens when clicking on the menu button
+        function openNav() {
+            var x = document.getElementById("navDemo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
         }
-    }
-</script>
+    </script>
 {% endif %}
 </body>
 </html>

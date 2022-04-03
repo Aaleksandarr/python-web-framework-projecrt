@@ -1,29 +1,31 @@
 {% extends 'main/base.html' %}
 {% block page_content %}
 
-        <!-- Page Container -->
+    <!-- Page Container -->
     <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
         <!-- The Grid -->
         <div class="w3-row">
-                <img src="{{ post.user.user.profile.photo.url }}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-                <span class="w3-right w3-opacity">{{ post.publication_date }}</span>
-                <h4>{{ post.user.username }}</h4><br>
-                <hr class="w3-clear">
-                <p>{{ post.content }}</p>
-                  <div class="w3-row-padding" style="margin:0 -16px">
-                    <div class="w3-half">
+            <img src="{{ post.user.user.profile.photo.url }}" alt="Avatar" class="w3-left w3-circle w3-margin-right"
+                 style="width:60px">
+            <span class="w3-right w3-opacity">{{ post.publication_date }}</span>
+            <h4>{{ post.user.username }}</h4><br>
+            <hr class="w3-clear">
+            <p>{{ post.content }}</p>
+            <div class="w3-row-padding" style="margin:0 -16px">
+                <div class="w3-half">
                     {% if post.photo %}
-                      <img src="{{ post.photo.url  }}"  alt="Northern Lights" class="w3-margin-bottom">
+                        <img src="{{ post.photo.url }}" alt="Northern Lights" class="w3-margin-bottom">
                     {% endif %}
-                      {% if is_owner %}
-                          <a href="{% url 'edit post' post.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Промени</a>
-                          <a href="{% url 'delete post' post.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Премахни</a>
-                      {% endif %}
-                    </div>
+                    {% if is_owner %}
+                        <a href="{% url 'edit post' post.pk %}"
+                           class="w3-button w3-theme-d2 w3-margin-bottom">Промени</a>
+                        <a href="{% url 'delete post' post.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Премахни</a>
+                    {% endif %}
+                </div>
 
-                  </div>
+            </div>
 
-    </div>
+        </div>
     </div>
     </div>
 {% endblock %}
