@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+{% block page_content %}
+
+    <!-- Page Container -->
+    <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+        <!-- The Grid -->
+        <div class="w3-row">
+
+            <div>
+                <form method="post" action="{% url 'create post' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button class="btn btn-primary mt-2" type="submit">Сподели</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+    </div>
+    </div>
+    <p style="margin-bottom:7.17cm;"></p>
+{% endblock %}

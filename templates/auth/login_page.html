@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+{% block page_content %}
+
+    <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+        <!-- The Grid -->
+        <div class="w3-row">
+            <div class="container mb-5">
+                <h1 class="text-center">Добра среща</h1>
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6">
+
+                        <!-- Login Form -->
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form }}
+                            <button class="w3-button w3-theme-d2 w3-margin-bottom" type="submit"> Заповядай </button>
+                        </form>
+                        <!-- End Login Form -->
+
+                    </div>
+                    <div class="col-lg-3"></div>
+                </div>
+            </div>
+            <div class="spacer"></div>
+        </div>
+    </div>
+<p style="margin-bottom:7cm;"></p>
+{% endblock %}

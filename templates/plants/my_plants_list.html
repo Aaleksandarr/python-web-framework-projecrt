@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+{% block page_content %}
+
+    <!-- Page Container -->
+    <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+        <!-- The Grid -->
+        <div class="w3-row">
+
+
+
+            </div>
+            <div class="d-inline p-2 w-50">
+
+<br>
+    <br>
+    <h2 class="text-center">Моите обяви</h2>
+    <div class="container mb-4">
+        <div class="d-flex justify-content-start mb-5">
+            {% for plant in plants %}
+                <div style="width: 18rem;">
+
+                    <img src="{{ plant.photo.url }}" width="200" height="300">
+                    <h5>{{ plant.kind }} {{ plant.type }} {{ plant.price }} лв.</h5>
+                    <h5>{{ plant.description }}</h5>
+{##}                <br>
+{#                    {% if is_owner %}#}
+{#                        <a href="{% url 'edit post' post.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Промени</a>#}
+{#                        <a href="{% url 'delete post' post.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Премахни</a>#}
+{#                    {% endif %}#}
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+           </div>
+        </div>
+
+{% endblock %}
