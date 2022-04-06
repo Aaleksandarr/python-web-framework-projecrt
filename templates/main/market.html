@@ -72,10 +72,13 @@
                                     {% csrf_token %}
                                     <select name="Type">
                                         <option selected disabled>-- избери тип --</option>
-                                        <option> Семе</option>
-                                        <option> Луковица</option>
-                                        <option> Разсад</option>
-                                        <option> Плод</option>
+{#                                        <option> Семе</option>#}
+{#                                        <option> Луковица</option>#}
+{#                                        <option> Разсад</option>#}
+{#                                        <option> Плод</option>#}
+                                        {% for kind in kinds %}
+                                            <option> {{ kind }}</option>
+                                        {% endfor %}
                                     </select>
                                     <select name="Kind">
                                         <option selected disabled>-- избери вид --</option>
@@ -95,6 +98,7 @@
                                         <option> Странджа</option>
                                     </select>
                                     <input type="submit" value="Търси">
+
 
                                 </form>
                             </div>

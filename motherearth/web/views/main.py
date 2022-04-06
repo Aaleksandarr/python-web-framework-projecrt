@@ -1,7 +1,7 @@
 from django.contrib.auth import mixins as auth_mixin
 from django.shortcuts import redirect
 from django.views import generic as views
-from motherearth.web.models import Post, Plants
+from motherearth.web.models import Post, Plants, Type, Kind
 
 
 class HomeView(views.TemplateView):
@@ -33,3 +33,6 @@ class MarketListView(auth_mixin.LoginRequiredMixin, views.ListView):
     template_name = 'main/market.html'
     context_object_name = 'plants'
     ordering = ['-publication_date']
+
+    def get_queryset(self):
+            return

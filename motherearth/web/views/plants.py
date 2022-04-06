@@ -1,7 +1,7 @@
 from django.contrib.auth import mixins as auth_mixin
 from django.urls import reverse_lazy
 from django.views import generic as views
-from motherearth.web.models import Plants
+from motherearth.web.models import Plants, Kind
 
 
 class CreatePlantView(auth_mixin.LoginRequiredMixin, views.CreateView):

@@ -26,23 +26,39 @@ class Post(models.Model):
     )
 
 
+class Kind(models.Model):
+
+    name = models.CharField(
+        max_length=10,
+    )
+
+    def __str__(self):
+        return f'{self.name}'
+
+
+class Type(models.Model):
+
+    name = models.CharField(
+        max_length=20,
+    )
+
+    def __str__(self):
+        return f'{self.name}'
+
+
 class Plants(models.Model):
-    KINDS = (
-        ("Семе", "Семе"),
-        ("Луковица", "Луковица"),
-        ("Разсад", "Разсад"),
-        ("Плод", "Плод"),
+    name = models.CharField(
+        max_length=20,
+
     )
-
-    TYPES = (
-        ("Домат", "Домат"),
-        ("Краставица", "Краставица"),
-        ("Лук", "Лук"),
+    kind = models.ForeignKey(
+        Kind,
+        on_delete=models.PROTECT,
     )
-
-    kind = models.CharField(max_length=10, choices=KINDS)
-
-    type = models.CharField(max_length=20, choices=TYPES)
+    type = models.ForeignKey(
+        Type,
+        on_delete=models.PROTECT,
+    )
 
     owner = models.ForeignKey(
         Profile,
