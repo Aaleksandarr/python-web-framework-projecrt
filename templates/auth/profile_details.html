@@ -1,9 +1,8 @@
 {% extends 'main/base.html' %}
 {% block page_content %}
 
-    <!-- Page Container -->
     <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
-        <!-- The Grid -->
+
         <div class="w3-row">
 
             <img src="{{ profile.photo.url }} " alt="description">
@@ -35,27 +34,7 @@
                     се</a>
                 <a href="{% url 'delete user' profile.user.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Премахни
                     се</a>
-
             {% endif %}
-            {#<br>#}
-            {#    <br>#}
-            {#    <h2 class="text-center">Моите разкази</h2>#}
-            {#    <div class="container mb-4">#}
-            {#        <div class="d-flex justify-content-start mb-5">#}
-            {#            {% for post in posts %}#}
-            {#                <div style="width: 18rem;">#}
-            {#                    <img src="{{ post.photo.url }}" width="200" height="300">#}
-            {#                    <h5>{{ post.content }}</h5>#}
-            {##}
-            {#                    {% if is_owner %}#}
-            {#                        <a href="{% url 'edit post' post.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Промени</a>#}
-            {#                        <a href="{% url 'delete post' post.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Премахни</a>#}
-            {#                    {% endif %}#}
-            {##}
-            {#                </div>#}
-            {#            {% endfor %}#}
-            {#        </div>#}
-            {#    </div>#}
         </div>
     </div>
 

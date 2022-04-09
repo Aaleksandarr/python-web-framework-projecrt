@@ -1,132 +1,36 @@
 {% extends 'main/base.html' %}
 {% block page_content %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>W3.CSS Template</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-w3schools.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        .w3-theme-l5 {
-            color: #000 !important;
-            background-color: #f8f9f8 !important
-        }
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+            a:link img {
+                opacity: 1.0;
+                filter: alpha(opacity=100); /* For IE8 and earlier */
+            }
 
-        .w3-theme-l4 {
-            color: #000 !important;
-            background-color: #e6ebe8 !important
-        }
+            a:hover img {
+                opacity: 0.6;
+                filter: alpha(opacity=60); /* For IE8 and earlier */
+            }
+        </style>
+    </head>
 
-        .w3-theme-l3 {
-            color: #000 !important;
-            background-color: #cdd7d1 !important
-        }
-
-        .w3-theme-l2 {
-            color: #000 !important;
-            background-color: #b4c3ba !important
-        }
-
-        .w3-theme-l1 {
-            color: #000 !important;
-            background-color: #9bafa3 !important
-        }
-
-        .w3-theme-d1 {
-            color: #fff !important;
-            background-color: #738e7d !important
-        }
-
-        .w3-theme-d2 {
-            color: #fff !important;
-            background-color: #667f6f !important
-        }
-
-        .w3-theme-d3 {
-            color: #fff !important;
-            background-color: #596f61 !important
-        }
-
-        .w3-theme-d4 {
-            color: #fff !important;
-            background-color: #4c5f53 !important
-        }
-
-        .w3-theme-d5 {
-            color: #fff !important;
-            background-color: #404f46 !important
-        }
-
-        .w3-theme-light {
-            color: #000 !important;
-            background-color: #f8f9f8 !important
-        }
-
-        .w3-theme-dark {
-            color: #fff !important;
-            background-color: #404f46 !important
-        }
-
-        .w3-theme-action {
-            color: #fff !important;
-            background-color: #404f46 !important
-        }
-
-        .w3-theme {
-            color: #fff !important;
-            background-color: #849c8d !important
-        }
-
-        .w3-text-theme {
-            color: #849c8d !important
-        }
-
-        .w3-border-theme {
-            border-color: #849c8d !important
-        }
-
-        .w3-hover-theme:hover {
-            color: #fff !important;
-            background-color: #849c8d !important
-        }
-
-        .w3-hover-text-theme:hover {
-            color: #849c8d !important
-        }
-
-        .w3-hover-border-theme:hover {
-            border-color: #849c8d !important
-        }
- a:link img {
- opacity: 1.0;
- filter: alpha(opacity=100); /* For IE8 and earlier */
-}
-
-a:hover img {
- opacity: 0.6;
- filter: alpha(opacity=60); /* For IE8 and earlier */
-}
-            </style>
-
-</head>
-<body class=" w3-theme-l4">
-<div>&nbsp;</div>
-   <div class="w3-col m3">&nbsp;</div>
-     <div class="w3-col m6" >
-      <div class="w3-row-padding">
-        <div class="w3-col-m12">
-          <div class="w3-card w3-round w3-white">
-            <div class="w3-container w3-padding">
-                <a href="{% url 'community view' %}" ><img src="media/logo.jpg" class="a" style="max-width: 100%;" /></a>
-                <p style="text-align:center">
-                    <a href="{% url 'login user' %}" class="w3-button w3-theme" > Влез </a>
-                    <a href="{% url 'register' %}"  class="w3-button w3-theme" > Присъедини се </a>
-                </p>
-             </div>
+    <body class=" w3-theme-l4">
+    <div>&nbsp;</div>
+    <div class="w3-col m3">&nbsp;</div>
+    <div class="w3-col m6">
+        <div class="w3-row-padding">
+            <div class="w3-col-m12">
+                <div class="w3-card w3-round w3-white">
+                    <div class="w3-container w3-padding">
+                        <a href="{% url 'community view' %}"><img src="media/logo.jpg" class="a"
+                                                                  style="max-width: 100%;"/></a>
+                        <p style="text-align:center">
+                            <a href="{% url 'login user' %}" class="w3-button w3-theme"> Влез </a>
+                            <a href="{% url 'register' %}" class="w3-button w3-theme"> Присъедини се </a>
+                        </p>
+                    </div>
                     <div class="col-lg-3"></div>
                 </div>
             </div>
@@ -134,38 +38,6 @@ a:hover img {
     </div>
 
 {% endblock %}}
-<footer id = upper class="w3-container w3-theme-d3 w3-padding-16">
-    <h5>Пазарувай местно!</h5>
-</footer>
-
-<footer id = footer class="w3-container w3-theme-d5">
-    <p>Майката Земя</p>
-</footer>
-
-<script>
-    // Accordion
-    function myFunction(id) {
-        var x = document.getElementById(id);
-        if (x.className.indexOf("w3-show") == -1) {
-            x.className += " w3-show";
-            x.previousElementSibling.className += " w3-theme-d1";
-        } else {
-            x.className = x.className.replace("w3-show", "");
-            x.previousElementSibling.className =
-                x.previousElementSibling.className.replace(" w3-theme-d1", "");
-        }
-    }
-
-    // Used to toggle the menu on smaller screens when clicking on the menu button
-    function openNav() {
-        var x = document.getElementById("navDemo");
-        if (x.className.indexOf("w3-show") == -1) {
-            x.className += " w3-show";
-        } else {
-            x.className = x.className.replace(" w3-show", "");
-        }
-    }
-</script>
 
 </body>
 </html>

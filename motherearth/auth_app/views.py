@@ -55,6 +55,18 @@ class EditProfileView(views.UpdateView):
     def get_success_url(self):
         return reverse_lazy('dashboard')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        posts = list(Post.objects.filter(user_id=self.object.user_id))
+
+        context.update({
+
+            'is_me': self.object.user_id == self.request.user.id,
+            'posts': posts,
+        })
+
+        return context
+
 
 class DeleteUserView(views.DeleteView):
     model = MotherearthUser
@@ -62,3 +74,16 @@ class DeleteUserView(views.DeleteView):
 
     def get_success_url(self):
         return reverse_lazy('index')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        posts = list(Post.objects.filter(user_id=self.object.id))
+
+        context.update({
+
+            'is_me': self.object.id == self.request.user.id,
+            'posts': posts,
+        })
+
+        return context
+

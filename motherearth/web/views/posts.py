@@ -41,6 +41,18 @@ class EditDashboardPostView(auth_mixin.LoginRequiredMixin, views.UpdateView):
     def get_success_url(self):
         return reverse_lazy('dashboard')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        posts = list(Post.objects.filter(user_id=self.object.user_id))
+
+        context.update({
+
+            'is_owner': self.object.user_id == self.request.user.id,
+            'posts': posts,
+        })
+
+        return context
+
 
 class DeleteDashboardPostView(auth_mixin.LoginRequiredMixin, views.DeleteView):
     model = Post
@@ -48,6 +60,18 @@ class DeleteDashboardPostView(auth_mixin.LoginRequiredMixin, views.DeleteView):
 
     def get_success_url(self):
         return reverse_lazy('dashboard')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        posts = list(Post.objects.filter(user_id=self.object.user_id))
+
+        context.update({
+
+            'is_owner': self.object.user_id == self.request.user.id,
+            'posts': posts,
+        })
+
+        return context
 
 
 class MyPostsView(auth_mixin.LoginRequiredMixin, views.ListView):

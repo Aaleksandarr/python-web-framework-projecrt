@@ -3,9 +3,14 @@
 
     <div class="containers">
         <img width="100%" src="https://wallpaperaccess.com/full/191396.jpg">
-        <div class="text"><h2>Майката Земя</h2> e единение на хора с близък начин на мислене и живот. Тя е връзка между
+        <div class="text"><h1>Майката Земя</h1> <h6>e единение на хора с близък начин на мислене и живот. Тя е връзка между
             производители на изцяло чиста растителна храна и потребители търсещи такава. Тя е традиции, занаяти, бит и
-            култура.
+            култура.</h6>
+            {% if not user.is_authenticated %}
+            <p style="text-align:right">
+
+                    <a href="{% url 'register' %}" > Присъедини се </a>
+            {% endif %}
         </div>
 
     </div>

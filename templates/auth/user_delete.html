@@ -1,11 +1,12 @@
 {% extends 'main/base.html' %}
 {% block page_content %}
+
     <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
-        <!-- The Grid -->
         <div class="w3-row">
             <div class="container mb-5">
                 <div class="row">
                     <div class="col-lg-12 text-center">
+                        {% if is_me %}
                         <h1>Сигурен ли си, че искаш да ни напуснеш? </h1>
                         <div class="m-auto d-flex justify-content-center">
                             <div class="m-2">
@@ -19,11 +20,14 @@
                                 <a class="w3-button w3-theme-d2 w3-margin-bottom" href="javascript:history.back()">Не,
                                     връщам се</a>
                             </div>
+                            {% else %}
+                            <h1 class="text-center">Не можеш да прeмахнеш друг!</h1>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <p style="margin-bottom:8.66cm;"></p>
+    <p style="margin-bottom:11.6cm;"></p>
 {% endblock %}
