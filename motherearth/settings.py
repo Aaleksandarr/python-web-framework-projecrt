@@ -42,6 +42,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'motherearth.web.middlewares.handle_exception',
 ]
 
 ROOT_URLCONF = 'motherearth.urls'
@@ -125,3 +126,17 @@ AUTH_USER_MODEL = 'auth_app.MotherearthUser'
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 LOGIN_URL = "/"
+
+LOGGING = {
+    'version': 1,
+    'disabled_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+}

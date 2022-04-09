@@ -1,14 +1,18 @@
 from django.contrib.auth import get_user_model
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MinLengthValidator
 from django.db import models
 from motherearth.auth_app.models import Profile
+from motherearth.common.validators import validate_only_letters
 
 UserModel = get_user_model()
 
 
 class Post(models.Model):
     title = models.CharField(
-        max_length=30
+        max_length=30,
+        validators=(
+            MinLengthValidator(2),
+        )
     )
     content = models.TextField(
     )
@@ -52,7 +56,10 @@ class Type(models.Model):
 class Plants(models.Model):
     name = models.CharField(
         max_length=20,
-
+        validators=(
+            MinLengthValidator(2),
+            validate_only_letters,
+        )
     )
     kind = models.ForeignKey(
         Kind,
@@ -72,7 +79,7 @@ class Plants(models.Model):
     )
     description = models.TextField(
         null=True,
-        blank=True
+        blank=True,
     )
     photo = models.FileField(
         null=True,

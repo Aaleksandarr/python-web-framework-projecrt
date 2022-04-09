@@ -1,4 +1,4 @@
-from django.contrib.auth import models as auth_models, get_user_model
+from django.contrib.auth import models as auth_models
 from django.core.validators import MinLengthValidator
 from django.db import models
 from motherearth.auth_app.managers import MotherearthUserManager

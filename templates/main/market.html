@@ -54,7 +54,7 @@
                     {% for plant in plants %}
                         <div class="w3-container w3-card w3-theme-l3 w3-round w3-margin"><br>
 
-                            <img src="{{ plant.owner.user.profile.photo.url }}" alt="Avatar"
+                            <img src="{{ plant.owner.user.profile.photo.url }}" alt="снимка"
                                  class="w3-left w3-circle w3-margin-right"
                                  style="width:60px"/>
                             <span class="w3-right w3-opacity">{{ plant.publication_date }}</span>
@@ -68,7 +68,7 @@
                                 <div class="w3-half">
 
                                     {% if plant.photo %}
-                                        <img src="{{ plant.photo.url }}" style="width:100%" alt="Northern Lights"
+                                        <img src="{{ plant.photo.url }}" style="width:100%" alt="снимка"
                                              class="w3-margin-bottom">
                                     {% endif %}
 

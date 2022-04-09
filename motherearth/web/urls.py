@@ -1,5 +1,5 @@
 from django.urls import path
-from motherearth.web.views.main import HomeView, DashboardView, CommunityView, MarketListView
+from motherearth.web.views.main import HomeView, DashboardView, CommunityView, MarketListView, InternalErrorView
 from motherearth.web.views.plants import CreatePlantView, MarketPlantsDetailsView, EditMarketPlantView, \
     DeleteMarketPlantView, MyPlantsView
 from motherearth.web.views.posts import CreateDashboardPost, EditDashboardPostView, DeleteDashboardPostView, \
@@ -24,5 +24,7 @@ urlpatterns = (
     path('plant/edit/<int:pk>/', EditMarketPlantView.as_view(), name='edit plant'),
     path('plant/delete/<int:pk>/', DeleteMarketPlantView.as_view(), name='delete plant'),
     path('plant/mine/', MyPlantsView.as_view(), name='my plants'),
+
+    path('error', InternalErrorView.as_view, name='error')
 )
 

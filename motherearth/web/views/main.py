@@ -56,3 +56,7 @@ class MarketListView(auth_mixin.LoginRequiredMixin, views.ListView):
         else:
             return Plants.objects.all().order_by('-publication_date')
 
+
+class InternalErrorView(views.View):
+    def get(self, request):
+        return redirect('error')
