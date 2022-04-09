@@ -50,36 +50,42 @@
                         </div>
                     </div>
                 </div>
-                {% for plant in plants %}
-                    <div class="w3-container w3-card w3-theme-l3 w3-round w3-margin"><br>
+                {% if plants %}
+                    {% for plant in plants %}
+                        <div class="w3-container w3-card w3-theme-l3 w3-round w3-margin"><br>
 
-                        <img src="{{ plant.owner.user.profile.photo.url }}" alt="Avatar"
-                             class="w3-left w3-circle w3-margin-right"
-                             style="width:60px"/>
-                        <span class="w3-right w3-opacity">{{ plant.publication_date }}</span>
-                        <h4>
-                            <a href="{% url 'profile details' plant.owner.user.profile.pk %}"> {{ plant.owner.user.username }}</a>
-                        </h4><br>
-                        <hr class="w3-clear">
-                        <p>{{ plant.name }}</p>
-                        <p>{{ plant.type }} {{ plant.kind }} {{ plant.price }}лв.</p>
-                        <div class="w3-row-padding" style="margin:0 -16px">
-                            <div class="w3-half">
+                            <img src="{{ plant.owner.user.profile.photo.url }}" alt="Avatar"
+                                 class="w3-left w3-circle w3-margin-right"
+                                 style="width:60px"/>
+                            <span class="w3-right w3-opacity">{{ plant.publication_date }}</span>
+                            <h4>
+                                <a href="{% url 'profile details' plant.owner.user.profile.pk %}"> {{ plant.owner.user.username }}</a>
+                            </h4><br>
+                            <hr class="w3-clear">
+                            <p>{{ plant.name }}</p>
+                            <p>{{ plant.type }} {{ plant.kind }} {{ plant.price }}лв.</p>
+                            <div class="w3-row-padding" style="margin:0 -16px">
+                                <div class="w3-half">
 
-                                <img src="{{ plant.photo.url }}" style="width:100%" alt="Northern Lights"
-                                     class="w3-margin-bottom">
+                                    {% if plant.photo %}
+                                        <img src="{{ plant.photo.url }}" style="width:100%" alt="Northern Lights"
+                                             class="w3-margin-bottom">
+                                    {% endif %}
 
-                                <a href="{% url 'plant details' plant.pk %}"
-                                   class="w3-button w3-theme-d2 w3-margin-bottom">Виж повече</a>
+                                    <a href="{% url 'plant details' plant.pk %}"
+                                       class="w3-button w3-theme-d2 w3-margin-bottom">Виж повече</a>
 
 
+                                </div>
                             </div>
                         </div>
+
+                    {% endfor %}
+                {% else %}
+                    <div class="w3-container w3-card w3-theme-l3 w3-round w3-margin"><br>
+                    <p> Няма обяви!</p>
                     </div>
-
-
-                {% endfor %}
-                
+                {% endif %}
                 <!-- End Middle Column -->
             </div>
 
@@ -90,8 +96,12 @@
                         <br>
                         <img src="/media/seeds.jpg" alt="снимка" style="width:80%;">
                         <p><strong>СЕМЕНА</strong></p>
-                        <a name="seeds" href="{% url 'market' %}"
-                           class="w3-button w3-block w3-theme-l4">Разгледай</a>
+                        <form action="{% url 'market' %}" method="GET">
+                            {% csrf_token %}
+                            <button name="seeds" type='submit' value="seeds" class="w3-button w3-block w3-theme-l4">
+                                Разгледай
+                            </button>
+                        </form>
                         <br>
                     </div>
                 </div>
@@ -102,8 +112,12 @@
                         <br>
                         <img src="/media/bulb.jpg" alt="снимка" style="width:80%;">
                         <p><strong>ЛУКОВИЦИ</strong></p>
-                        <a name="bulbs" href="{% url 'market' %}"
-                           class="w3-button w3-block w3-theme-l4">Разгледай</a>
+                        <form action="{% url 'market' %}" method="GET">
+                            {% csrf_token %}
+                            <button name="bulbs" type='submit' value="seeds" class="w3-button w3-block w3-theme-l4">
+                                Разгледай
+                            </button>
+                        </form>
                         <br>
                     </div>
                 </div>
@@ -113,8 +127,12 @@
                         <br>
                         <img src="/media/seedling.jpg" alt="снимка" style="width:80%;">
                         <p><strong>РАЗСАД</strong></p>
-                        <a name="seedlings" href="{% url 'market' %}"
-                           class="w3-button w3-block w3-theme-l4">Разгледай</a>
+                        <form action="{% url 'market' %}" method="GET">
+                            {% csrf_token %}
+                            <button name="seedlings" type='submit' value="seeds" class="w3-button w3-block w3-theme-l4">
+                                Разгледай
+                            </button>
+                        </form>
                         <br>
                     </div>
                 </div>
@@ -124,9 +142,11 @@
                         <br>
                         <img src="/media/fruits.jpg" alt="снимка" style="width:80%;">
                         <p><strong>ПЛОДОВЕ</strong></p>
-                        <form action="" method="post">
-                        <a name="fruits" href="{% url 'market' %}"
-                           class="w3-button w3-block w3-theme-l4" type="submit">Разгледай</a>
+                        <form action="{% url 'market' %}" method="GET">
+                            {% csrf_token %}
+                            <button name="fruits" type='submit' value="seeds" class="w3-button w3-block w3-theme-l4">
+                                Разгледай
+                            </button>
                         </form>
                         <br>
                     </div>

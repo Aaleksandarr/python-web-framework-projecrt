@@ -32,6 +32,27 @@ class MarketListView(auth_mixin.LoginRequiredMixin, views.ListView):
     model = Plants
     template_name = 'main/market.html'
     context_object_name = 'plants'
-    ordering = ['-publication_date']
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        request = self.request
+        context.update({
+            'request': request,
+        }
+        )
+
+        return context
+
+    def get_queryset(self):
+        if self.request.GET:
+            if "seeds" in self.request.GET:
+                return Plants.objects.filter(kind_id=5).order_by('-publication_date')
+            elif "bulbs" in self.request.GET:
+                return Plants.objects.filter(kind_id=6).order_by('-publication_date')
+            elif "seedlings" in self.request.GET:
+                return Plants.objects.filter(kind_id=7).order_by('-publication_date')
+            elif "fruits" in self.request.GET:
+                return Plants.objects.filter(kind_id=8).order_by('-publication_date')
+        else:
+            return Plants.objects.all().order_by('-publication_date')
 

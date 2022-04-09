@@ -86,3 +86,5 @@ class MyPlantsView(auth_mixin.LoginRequiredMixin, views.ListView):
         return Plants.objects.filter(owner=self.request.user.profile)
 
 
+
+
