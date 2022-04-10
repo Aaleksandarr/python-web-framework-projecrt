@@ -25,6 +25,6 @@ urlpatterns = (
     path('plant/delete/<int:pk>/', DeleteMarketPlantView.as_view(), name='delete plant'),
     path('plant/mine/', MyPlantsView.as_view(), name='my plants'),
 
-    path('error', InternalErrorView.as_view, name='error')
+    path('error', InternalErrorView.as_view(), name='error')
 )
 

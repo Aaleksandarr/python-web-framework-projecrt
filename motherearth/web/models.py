@@ -58,7 +58,7 @@ class Plants(models.Model):
         max_length=20,
         validators=(
             MinLengthValidator(2),
-            validate_only_letters,
+
         )
     )
     kind = models.ForeignKey(

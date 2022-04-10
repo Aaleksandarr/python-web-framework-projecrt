@@ -154,8 +154,10 @@
 
             <a href="{% url 'profile details' user.id %}"
                class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">
+                {% if user.profile.photo%}
                 <img src="{{ user.profile.photo.url }}" class="w3-circle" style="height:23px;width:23px"
                      alt="Това съм аз"></a>
+                    {% endif %}
         </div>
     </div>
 {% endif %}

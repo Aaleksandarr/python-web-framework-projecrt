@@ -11,9 +11,10 @@
                 <div class="w3-card w3-round w3-white">
                     <div class="w3-container">
                         <h4 class="w3-center">{{ user.profile }}</h4>
-
+                        {% if  request.user.profile.photo%}
                         <p class="w3-center"><img src="{{request.user.profile.photo.url}}" class="w3-circle"
                                                   style="height:106px;width:106px" alt="Avatar"></p>
+                        {% endif %}
                         <hr>
                         {% if request.user.is_authenticated %}
                         <p><a href="{% url 'profile details' user.profile.pk%}" > Виж се </a></p>
@@ -66,9 +67,10 @@
                 </div>
                 {% for post in posts %}
                     <div class="w3-container w3-card w3-theme-l3 w3-round w3-margin"><br>
-
+                        {% if post.user.user.profile.photo %}
                         <img src="{{ post.user.user.profile.photo.url }}" alt="Avatar" class="w3-left w3-circle w3-margin-right"
                              style="width:60px"/>
+                        {% endif %}
                         <span class="w3-right w3-opacity">{{ post.publication_date }}</span>
                         <h4><a href="{% url 'profile details' post.user.user.profile.pk %}"> {{ post.user.user.username }}</a></h4><br>
                         <hr class="w3-clear">
@@ -131,14 +133,6 @@
                 </div>
                 <br>
 
-                <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
-                    <p>ADS</p>
-                </div>
-                <br>
-
-                <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
-                    <p><i class="fa fa-bug w3-xxlarge"></i></p>
-                </div>
                     <div class="w3-top">
                         <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
                             <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2"></a>

@@ -1,5 +1,5 @@
 from django.contrib.auth import mixins as auth_mixin
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.views import generic as views
 from motherearth.web.models import Post, Plants
 
@@ -59,4 +59,4 @@ class MarketListView(auth_mixin.LoginRequiredMixin, views.ListView):
 
 class InternalErrorView(views.View):
     def get(self, request):
-        return redirect('error')
+        return render(request, 'main/internal_error.html')
