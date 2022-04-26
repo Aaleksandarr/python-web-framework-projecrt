@@ -5,29 +5,30 @@
         <div class="w3-row">
         </div>
         <div class="d-inline p-2 w-50">
-
-            <br>
-            <br>
-            <h2 class="text-center">Моите обяви</h2>
             <div class="container mb-4">
                 <div class="d-flex justify-content-start mb-5">
+                <h2>Моите обяви</h2>
+                <br>
                 {% if plants %}
                     {% for plant in plants %}
-                        <div style="width: 18rem;">
+                        <div class="horizontalBlocks">
+                            <div class="wrap">
+                                <a href="{% url 'plant details' plant.pk %}">
+                                    <img class="rel" src="{{ plant.photo.url }}" style="max-width: 200px;width:100%"
+                                         alt="снимка"></a>
 
-                            <img src="{{ plant.photo.url }}" width="200" height="300">
-                            <h5>{{ plant.kind }} {{ plant.type }} {{ plant.price }} лв.</h5>
-                            {% if plant.description %}
-                            <h5>{{ plant.description }}</h5>
-                            {% endif %}
-                            <br>
-
+                                <p>{{ plant.name }}</p>
+                                <p style="font-style: italic">{{ plant.price }} лв.</p>
+                            </div>
                         </div>
+
                     {% endfor %}
+                    {% else %}
+                    <h2>Нямате обяви!</h2>
                 {% endif %}
                 </div>
             </div>
         </div>
     </div>
-
+ <p style="margin-bottom:7cm;"></p>
 {% endblock %}

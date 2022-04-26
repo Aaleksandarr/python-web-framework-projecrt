@@ -1,0 +1,34 @@
+{% extends 'main/base.html' %}
+{% block page_content %}
+
+    <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+        <div class="w3-row">
+            <div class="container mb-5">
+
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6">
+                        {% if is_owner %}
+                            <form method="post" action={% url 'delete product' object.pk %}>
+                                {% csrf_token %}
+                                {{ form }}
+
+                                <p>Сигурен ли си?</p>
+
+
+                                <input type="submit" value="Изтрий">
+                            </form>
+                        {% else %}
+                            <h1 class="text-center">Чужда обява!</h1>
+                        {% endif %}
+
+                    </div>
+                    <div class="col-lg-3"></div>
+                </div>
+            </div>
+            <div class="spacer"></div>
+        </div>
+    </div>
+    <p style="margin-bottom:12cm;"></p>
+
+{% endblock %}

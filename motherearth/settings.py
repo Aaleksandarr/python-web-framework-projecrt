@@ -127,16 +127,22 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 LOGIN_URL = "/"
 
+LOGGING_LEVEL = 'INFO'
+
 LOGGING = {
     'version': 1,
-    'disabled_existing_loggers': False,
     'handlers': {
         'console': {
+            # DEBUG, WARNING, INFO, ERROR, CRITICAL,
+            'level': LOGGING_LEVEL,
+            'filters': [],
             'class': 'logging.StreamHandler',
-        },
+        }
     },
-    'root': {
-        'handlers': ['console'],
-        'level': 'DEBUG',
-    },
+    'loggers': {
+        'django.db.backends': {
+            'level': LOGGING_LEVEL,
+            'handlers': ['console'],
+        }
+    }
 }

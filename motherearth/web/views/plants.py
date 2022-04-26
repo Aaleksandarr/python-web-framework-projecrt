@@ -85,6 +85,3 @@ class MyPlantsView(auth_mixin.LoginRequiredMixin, views.ListView):
     def get_queryset(self):
         return Plants.objects.filter(owner=self.request.user.profile)
 
-
-
-

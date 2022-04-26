@@ -11,15 +11,17 @@
                 <div class="w3-card w3-round w3-white">
                     <div class="w3-container">
                         <h4 class="w3-center">{{ user.profile }}</h4>
-                        {% if  request.user.profile.photo%}
+                        {% if  request.user.profile.photo %}
                         <p class="w3-center"><img src="{{request.user.profile.photo.url}}" class="w3-circle"
                                                   style="height:106px;width:106px" alt="Avatar"></p>
                         {% endif %}
                         <hr>
                         {% if request.user.is_authenticated %}
-                        <p><a href="{% url 'profile details' user.profile.pk%}" > Виж се </a></p>
-                        <p><a href="{% url 'change password' %}" > Промени код </a></p>
-                        <p><a href="{% url 'logout user' %}" > Излез </a></p>
+
+                        <p><a href="{% url 'profile details' user.profile.pk%}" style="text-decoration: none"> Виж се </a></p>
+                        <p><a href="{% url 'change password' %}" style="text-decoration: none"> Промени код </a></p>
+                        <p><a href="{% url 'logout user' %}" style="text-decoration: none"> Излез </a></p>
+
                         {% endif %}
                     </div>
                 </div>
@@ -29,8 +31,11 @@
                 <div class="w3-card w3-round">
                     <div class="w3-white">
 
-                         <a class="w3-button w3-block w3-theme-l1 w3-left-align" href="{% url 'my posts' %}" > Моите разкази </a>
-                    </div>
+                        <a class="w3-button w3-block w3-theme-l1 w3-center-align" href="{% url 'create post' %}" > Сподели ни нещо </a>
+
+                         <a class="w3-button w3-block w3-theme-l1 w3-center-align" href="{% url 'my posts' %}" > Моите разкази </a>
+
+</div>
                 </div>
                 <br>
 
@@ -45,22 +50,9 @@
                     <div class="w3-col m12">
                         <div class="w3-theme-l3">
                             <div class="w3-container w3-padding">
-                                <h6 align=" center" class="w3-opacity">Добре сте дошли на нашата седянка!<!doctype
-                                    html>
-                                    <html lang="en">
-                                    <head>
-                                        <meta charset="UTF-8">
-                                        <meta name="viewport"
-                                              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-                                        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-                                        <title>Document</title>
-                                    </head>
-                                    <body>
-                                    
-                                    </body>
-                                    </html></h6>
+                                <h6 align=" center" class="w3-opacity">Добре сте дошли на нашата седянка!</h6>
 
-                                <a href="{% url 'create post' %}" class="w3-button w3-theme-d2"> Сподели ни нещо</a>
+
                             </div>
                         </div>
                     </div>
@@ -72,9 +64,9 @@
                              style="width:60px"/>
                         {% endif %}
                         <span class="w3-right w3-opacity">{{ post.publication_date }}</span>
-                        <h4><a href="{% url 'profile details' post.user.user.profile.pk %}"> {{ post.user.user.username }}</a></h4><br>
+                        <h4><a style="text-decoration: none" href="{% url 'profile details' post.user.user.profile.pk %}"> {{ post.user.user.username }}</a></h4><br>
                         <hr class="w3-clear">
-                        <p>{{ post.title }}</p>
+                        <h2>{{ post.title }}</h2>
                         <div class="w3-row-padding" style="margin:0 -16px">
                             <div class="w3-half">
                             {% if post.photo %}
@@ -84,12 +76,6 @@
                                 <a href="{% url 'post details' post.pk %}"
                                    class="w3-button w3-theme-d2 w3-margin-bottom">Виж повече</a>
 
-                                {% if is_owner %}
-                                    <a href="{% url 'edit post' post.pk %}"
-                                       class="w3-button w3-theme-d2 w3-margin-bottom">Промени</a>
-                                    <a href="{% url 'delete post' post.pk %}"
-                                       class="w3-button w3-theme-d2 w3-margin-bottom">Премахни</a>
-                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -103,35 +89,22 @@
             <div class="w3-col m2">
                 <div class="w3-card w3-round w3-white w3-center">
                     <div class="w3-container">
+                        {% if last_event %}
                         <p>Предстоящи сбирки:</p>
-                        <img src="/media/kozunaci.jpg" alt="снимка" style="width:100%;">
-                        <p><strong>Месене на козунаци</strong></p>
-                        <p>Петък 15:00</p>
+                        <img src="{{ last_event.photo.url }}" alt="снимка" style="width:100%;">
+                        <p><strong>{{ last_event.name }}</strong></p>
+                        <p>{{ last_event.date }}</p>
                         <p>
-                            <button class="w3-button w3-block w3-theme-l4">Разгледай</button>
+                            <a href="{% url 'event details' last_event.pk %}"
+                                       class="w3-button w3-theme-d2 w3-margin-bottom">Заповядай</a>
                         </p>
+                            {% else %}
+                            <p>Няма предстоящи събития</p>
+                        {% endif %}
                     </div>
                 </div>
                 <br>
-{##}
-                <div class="w3-card w3-round w3-white w3-center">
-                    <div class="w3-container">
-                        <p>Приятелски покани</p>
-                        <img src="/media/бет.jpg" alt="Avatar" style="width:50%"><br>
-                        <span>Благовеста Бонева</span>
-                        <div class="w3-row w3-opacity">
-                            <div class="w3-half">
-                                <button class="w3-button w3-block w3-green w3-section" title="Accept"><i
-                                        class="fa fa-check"></i></button>
-                            </div>
-                            <div class="w3-half">
-                                <button class="w3-button w3-block w3-red w3-section" title="Decline"><i
-                                        class="fa fa-remove"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
+
 
                     <div class="w3-top">
                         <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
@@ -145,5 +118,5 @@
         </div>
 
         <!-- End Page Container -->
-    </div></div>
+    </div>
 {% endblock %}

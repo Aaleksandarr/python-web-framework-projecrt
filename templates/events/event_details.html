@@ -1,0 +1,109 @@
+{#{% extends 'main/base.html' %}#}
+{#{% block page_content %}#}
+{##}
+{##}
+{#    <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">#}
+{##}
+{#        <div class="w3-row">#}
+{#<img src="{{ event.owner.photo.url }}" alt="Avatar" class="w3-left w3-circle w3-margin-right"#}
+{#             style="width:60px">#}
+{#            <span class="w3-right w3-opacity">{{ event.publication_date }}</span>#}
+{#            <h4>{{ event.owner.user.username }}</h4><br>#}
+{#            <hr class="w3-clear">#}
+{#            <h1>{{ event.name }} </h1>#}
+{#            <h4>{{ event.date }} </h4>#}
+{#            <h4>{{ event.location }}</h4>#}
+{##}
+{#            <div class="w3-row-padding" style="margin:0 -16px">#}
+{#                <div class="w3-half">#}
+{#                    {% if event.photo %}#}
+{#                        <img src="{{ event.photo.url }}" alt="Northern Lights" class="w3-margin-bottom">#}
+{#                    {% endif %}#}
+{#                {% if event.description %}#}
+{#                <p>{{ event.description }}</p>#}
+{#            {% endif %}#}
+{#                    {% if is_owner %}#}
+{#                        <a href="{% url 'edit event' event.pk %}"#}
+{#                           class="w3-button w3-theme-d2 w3-margin-bottom">Промени</a>#}
+{#                        <a href="{% url 'delete event' event.pk %}" class="w3-button w3-theme-d2 w3-margin-bottom">Премахни</a>#}
+{#                    {% endif %}#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{##}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#{% endblock %}#}
+
+
+
+{% extends 'main/base.html' %}
+{% block page_content %}
+
+
+    <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+
+        <div class="w3-row">
+            <div class="w3-col m7">
+                {% if event.photo %}
+                    <img src="{{ event.photo.url }}" alt="Northern Lights" class="w3-margin-bottom" style="width:100%">
+                {% endif %}
+            </div>
+
+
+            <div class="w3-col m5">
+
+                <div class="w3-row-padding">
+                    <div class="w3-col m12">
+                        <div class="w3-theme-l3">
+                            <div class="w3-container w3-padding">
+                                <p style="font-style: italic">{{ event.date }} </p>
+                                <h2> {{ event.name }} </h2>
+                                <h4>{{ event.location }}</h4>
+
+                                <hr class="w3-clear">
+                                <div class="w3-row-padding" style="margin:0 -16px">
+                                    {% if event.description %}
+                                        <span class="w3-left w3-opacity">Описание</span>
+                                        <br>
+                                        <p>{{ event.description }}</p>
+                                    {% endif %}
+
+
+                                    <hr class="w3-clear">
+                                    <span class="w3-left w3-opacity">Деятел</span>
+                                    <br>
+                                    <br>
+                                    <img src="{{ event.owner.photo.url }}" alt="Avatar"
+                                         class="w3-left w3-circle w3-margin-right" style="width:60px">
+                                    <a href="{% url 'profile details' event.owner.user.profile.pk %}"> {{ event.owner.user.username }}</a>
+                                   </div>
+
+
+                                    <hr class="w3-clear">
+
+
+                                {% if is_owner %}
+                                    <div style="text-align: center">
+                                        <a href="{% url 'edit event' event.pk %}"
+                                           class="w3-button w3-theme-d2 w3-margin-bottom">Промени</a>
+                                        <a href="{% url 'delete event' event.pk %}"
+                                           class="w3-button w3-theme-d2 w3-margin-bottom">Премахни</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                        <br>
+                        <br>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}

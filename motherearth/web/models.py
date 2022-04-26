@@ -34,7 +34,6 @@ class Post(models.Model):
 
 
 class Kind(models.Model):
-
     name = models.CharField(
         max_length=10,
     )
@@ -44,7 +43,6 @@ class Kind(models.Model):
 
 
 class Type(models.Model):
-
     name = models.CharField(
         max_length=20,
     )
@@ -91,26 +89,29 @@ class Plants(models.Model):
         return f'{self.name}'
 
 
-class Product(models.Model):
-    PRODUCTS = (
-        ("Грънчарство", "Грънчарство"),
-        ("Кошничарство", "Кошничарство"),
-        ("Посуда", "Посуда"),
-        ("Накити", "Накити"),
-        ("Инструменти", "Инструменти"),
-        ("Дървени занаяти", "Дървени занаяти"),
-        ("Текстил", "Текстил"),
-        ("Козметика", "Козметика"),
-        ("Други", "Други")
+class Craft(models.Model):
+    name = models.CharField(
+        max_length=20,
     )
 
-    product = models.CharField(
-        max_length=20,
-        choices=PRODUCTS
+    def __str__(self):
+        return f'{self.name}'
+
+
+class Product(models.Model):
+    craft = models.ForeignKey(
+        Craft,
+        on_delete=models.PROTECT,
     )
     owner = models.ForeignKey(
         to=Profile,
         on_delete=models.CASCADE,
+    )
+    title = models.CharField(
+        max_length=20,
+        validators=(
+            MinLengthValidator(2),
+        )
     )
     description = models.TextField(
         null=True,
@@ -121,9 +122,15 @@ class Product(models.Model):
         blank=True
     )
     price = models.FloatField(validators=[MinValueValidator(0)])
+    publication_date = models.DateTimeField(
+        auto_now_add=True,
+    )
+
+    def __str__(self):
+        return f'{self.title}'
 
 
-class Place(models.Model):
+class Places(models.Model):
     name = models.CharField(max_length=20)
     address = models.CharField(max_length=50)
     description = models.TextField(
@@ -139,6 +146,13 @@ class Place(models.Model):
         blank=True,
         unique=True,
     )
+    owner = models.ForeignKey(
+        to=Profile,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f'{self.name}'
 
 
 class Event(models.Model):
@@ -152,3 +166,40 @@ class Event(models.Model):
     publication_date = models.DateTimeField(
         auto_now_add=True,
     )
+    photo = models.ImageField(
+        null=True,
+        blank=True
+    )
+    owner = models.ForeignKey(
+        to=Profile,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f'{self.name}'
+
+
+class Thanks(models.Model):
+    title = models.CharField(
+        max_length=30,
+        validators=(
+            MinLengthValidator(2),
+        )
+    )
+    content = models.TextField(
+    )
+
+    publication_date = models.DateTimeField(
+        auto_now_add=True,
+    )
+    photo = models.ImageField(
+        null=True,
+        blank=True
+    )
+    user = models.ForeignKey(
+        Profile,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f'{self.title}'
