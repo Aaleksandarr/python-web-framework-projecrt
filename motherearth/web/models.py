@@ -130,7 +130,20 @@ class Product(models.Model):
         return f'{self.title}'
 
 
+class Categories(models.Model):
+    title = models.CharField(
+        max_length=20,
+    )
+
+    def __str__(self):
+        return f'{self.title}'
+
+
 class Places(models.Model):
+    categories = models.ForeignKey(
+        Categories,
+        on_delete=models.PROTECT,
+    )
     name = models.CharField(max_length=20)
     address = models.CharField(max_length=50)
     description = models.TextField(

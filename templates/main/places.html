@@ -1,0 +1,101 @@
+{% extends 'main/base.html' %}
+{% block page_content %}
+
+    <!-- Page Container -->
+    <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+        <!-- The Grid -->
+        <div class="w3-row">
+            <!-- Left Column -->
+            <div class="w3-col m2">
+                <div class="w3-card w3-round">
+                    <div class="w3-white">
+
+                        <a class="w3-button w3-block w3-theme-l1 w3-left-align" href="{% url 'create place' %}">
+                            Създай
+                            обява </a>
+
+                        <a class="w3-button w3-block w3-theme-l1 w3-left-align" href="{% url 'my places' %}"> Моите
+                            обяви </a>
+
+
+                    </div>
+                </div>
+                <br>
+                <div class="w3-card w3-round w3-theme-l3 w3-center">
+                    <div class="w3-container">
+                        <h4 style="font-style: oblique">Последни обяви:</h4>
+
+                    </div>
+
+                </div>
+                <br>
+              <br>
+                <div class="w3-card w3-round w3-theme-l3 w3-center">
+                    <div class="w3-container">
+                        <br>
+                        <form action="{% url 'places' %}" method="GET">
+                            {% csrf_token %}
+                            {% for category in category_list %}
+
+                                <button class="w3-button w3-block w3-theme-l3 w3-center-align" name="place"
+                                        type='{{ category }}' value="{{ category }}">
+                                    {{ category }}
+                                </button>
+                            {% endfor %}
+
+                        </form>
+                        <br>
+                    </div>
+                </div>
+                <!-- End Left Column -->
+            </div>
+
+
+            <!-- Middle Column -->
+            <div class="w3-col m10">
+                <div class="w3-row-padding">
+                    <div class="w3-col m12">
+                        <div class="w3-theme-l3">
+                            <div class="w3-container w3-padding">
+                                <h6 style="text-align: center" class="w3-opacity">Добре дошли на Чаршията!</h6>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% if places %}
+
+
+                    <div class="w3-container w3-card w3-theme-l3 w3-round w3-margin"><br>
+
+                    <br>
+                    {% for place in places %}
+                        <div class="horizontalBlocks">
+                            <div class="wrap">
+                                <a href="{% url 'place details' place.pk %}">
+                                    <img class="rel" src="{{ place.photo.url }}" style="max-width: 200px;width:100%"
+                                         alt="снимка"></a>
+
+                                <h4>{{ place.name }}</h4>
+                                <p style="font-style: italic">{{ place.address }}</p>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                {% else %}
+                    <div class="w3-container w3-card w3-theme-l3 w3-round w3-margin"><br>
+                        <p> Няма обяви!</p>
+                    </div>
+                {% endif %}
+
+                <!-- End Middle Column -->
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <p style="margin-bottom:5cm;"></p>
+{% endblock %}

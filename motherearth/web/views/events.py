@@ -10,9 +10,9 @@ class CreateEventView(auth_mixin.LoginRequiredMixin, views.CreateView):
     fields = ('name', 'date', 'description', 'photo', 'location')
     success_url = reverse_lazy('products')
 
-    # def form_valid(self, form):
-    #     form.instance.owner = self.request.user.profile
-    #     return super().form_valid(form)
+    def form_valid(self, form):
+        form.instance.owner = self.request.user.profile
+        return super().form_valid(form)
 
 
 class EventDetailsView(auth_mixin.LoginRequiredMixin, views.DetailView):

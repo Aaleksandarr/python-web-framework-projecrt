@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from motherearth.web.models import Plants, Product, Places, Post, Type, Kind, Event, Craft, Thanks
+from motherearth.web.models import Plants, Product, Places, Post, Type, Kind, Event, Craft, Thanks, Categories
 
 
 @admin.register(Plants)
@@ -41,6 +41,11 @@ class ProfileAdmin(admin.ModelAdmin):
 @admin.register(Craft)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
+
+
+@admin.register(Categories)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title')
 
 
 @admin.register(Thanks)

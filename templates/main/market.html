@@ -20,7 +20,15 @@
 
                     </div>
                 </div>
+ <br>
+                <div class="w3-card w3-round w3-theme-l3 w3-center">
+                    <div class="w3-container">
+                        <h4 style="font-style: oblique">Последни обяви:</h4>
 
+                    </div>
+
+                </div>
+                <br>
                 <br>
                 <div class="w3-card w3-round w3-theme-l3 w3-center">
                     <div class="w3-container">
@@ -63,7 +71,7 @@
 
 
                     <div class="w3-container w3-card w3-theme-l3 w3-round w3-margin"><br>
-                    <h4 style="font-style: oblique">Последни обяви</h4>
+
                     <br>
                     {% for plant in plants %}
                         <div class="horizontalBlocks">
@@ -71,8 +79,8 @@
                                 <a href="{% url 'plant details' plant.pk %}">
                                     <img class="rel" src="{{ plant.photo.url }}" style="max-width: 200px;width:100%"
                                          alt="снимка"></a>
-                                {#                                <p>{{ plant.type }} ({{ plant.kind }}) </p>#}
-                                <p>{{ plant.name }}</p>
+
+                                <h4>{{ plant.name }}</h4>
                                 <p style="font-style: italic">{{ plant.price }} лв.</p>
                             </div>
                         </div>

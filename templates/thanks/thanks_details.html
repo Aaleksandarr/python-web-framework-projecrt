@@ -1,0 +1,61 @@
+{% extends 'main/base.html' %}
+{% block page_content %}
+
+    <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+
+        <div class="w3-row">
+            <div class="w3-col m7">
+                {% if thanks.photo %}
+                    <img src="{{ thanks.photo.url }}" alt="Northern Lights" class="w3-margin-bottom"
+                         style="width:100%">
+                {% endif %}
+            </div>
+
+
+            <div class="w3-col m5">
+
+                <div class="w3-row-padding">
+                    <div class="w3-col m12">
+                        <div class="w3-theme-l3">
+                            <div class="w3-container w3-padding">
+                                <img src="{{ thanks.user.user.profile.photo.url }}" alt="Avatar"
+
+                                     class="w3-left w3-circle w3-margin-right" style="width:60px">
+
+                                <h2>{{ thanks.user.user.username }}</h2><br>
+                                <span class="w3-right w3-opacity">{{ thanks.publication_date }}</span>
+                                <hr class="w3-clear">
+                                <div class="w3-row-padding" style="margin:0 -16px">
+
+
+                                    <div style="text-align: center">
+                                        <h2>{{ thanks.title }}</h2>
+                                    </div>
+
+                                    {% if thanks.content %}
+                                        <p>{{ thanks.content }}</p>
+                                    {% endif %}
+                                    <br>
+                                    {% if is_owner %}
+                                        <div style="text-align: center">
+                                            <a href="{% url 'edit thanks' thanks.pk %}"
+                                               class="w3-button w3-theme-d2 w3-margin-bottom">Промени</a>
+                                            <a href="{% url 'delete thanks' thanks.pk %}"
+                                               class="w3-button w3-theme-d2 w3-margin-bottom">Премахни</a>
+                                        </div>
+                                    {% endif %}
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <p style="margin-bottom:6cm;"></p>
+
+{% endblock %}

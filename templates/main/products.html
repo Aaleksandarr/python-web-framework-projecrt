@@ -20,7 +20,15 @@
 
                     </div>
                 </div>
+                <br>
+                <div class="w3-card w3-round w3-theme-l3 w3-center">
+                    <div class="w3-container">
+                        <h4 style="font-style: oblique">Последни обяви:</h4>
 
+                    </div>
+
+                </div>
+                <br>
                 <br>
                 <div class="w3-card w3-round w3-theme-l3 w3-center">
                     <div class="w3-container">
@@ -60,7 +68,7 @@
 
 
                     <div class="w3-container w3-card w3-theme-l3 w3-round w3-margin"><br>
-                    <h4 style="font-style: oblique">Последни обяви</h4>
+
                     <br>
                     {% for product in products %}
                         <div class="horizontalBlocks">
@@ -69,7 +77,7 @@
                                     <img class="rel" src="{{ product.photo.url }}" style="max-width: 200px;width:100%"
                                          alt="снимка"></a>
 
-                                <p>{{ product.title }}</p>
+                                <h4>{{ product.title }}</h4>
                                 <p style="font-style: italic">{{ product.price }} лв.</p>
                             </div>
                         </div>

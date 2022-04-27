@@ -1,35 +1,118 @@
+
 {% extends 'main/base.html' %}
 {% block page_content %}
 
+    <!-- Page Container -->
     <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+        <!-- The Grid -->
         <div class="w3-row">
-        </div>
-        <div class="d-inline p-2 w-50">
-            <div class="container mb-4">
-                <div class="d-flex justify-content-start mb-5">
+            <!-- Left Column -->
+            <div class="w3-col m3">
+                <!-- Profile -->
+                <div class="w3-card w3-round w3-white">
+                    <div class="w3-container">
+                        <h4 class="w3-center">{{ user.profile }}</h4>
+                        {% if  request.user.profile.photo %}
+                        <p class="w3-center"><img src="{{request.user.profile.photo.url}}" class="w3-circle"
+                                                  style="height:106px;width:106px" alt="Avatar"></p>
+                        {% endif %}
+                        <hr>
+                        {% if request.user.is_authenticated %}
 
-                    <br>
-                    {% if thanks %}
-                        {% for thank in thanks %}
-                            <div class="horizontalBlocks">
-                                <div class="wrap">
+                        <p><a href="{% url 'profile details' user.profile.pk%}" style="text-decoration: none"> Виж се </a></p>
+                        <p><a href="{% url 'change password' %}" style="text-decoration: none"> Промени код </a></p>
+                        <p><a href="{% url 'logout user' %}" style="text-decoration: none"> Излез </a></p>
 
-                                    {% if thank.photo %}
-                                        <img class="rel" src="{{ thank.photo.url }}" style="max-width: 200px;width:100%"
-                                             alt="снимка"></a>
-                                    {% endif %}
-                                    <h4>{{ thank.title }}</h4>
-                                    <p>{{ thank.content }} лв.</p>
-                                </div>
-                            </div>
-
-                        {% endfor %}
-                    {% else %}
-                        <h2>Няма благодарности!</h2>
-                    {% endif %}
+                        {% endif %}
+                    </div>
                 </div>
+                <br>
+
+
+                <div class="w3-card w3-round">
+                    <div class="w3-white">
+
+                        <a class="w3-button w3-block w3-theme-l1 w3-center-align" href="{% url 'create thanks' %}" > Благодаря </a>
+
+                         <a class="w3-button w3-block w3-theme-l1 w3-center-align" href="{% url 'my thanks' %}" > Моите благодарности </a>
+
+</div>
+                </div>
+                <br>
+
+                <!-- End Left Column -->
             </div>
+
+
+            <!-- Middle Column -->
+            <div class="w3-col m7">
+
+                <div class="w3-row-padding">
+                    <div class="w3-col m12">
+                        <div class="w3-theme-l3">
+                            <div class="w3-container w3-padding">
+                                <h6 align=" center" class="w3-opacity">Дарете Блага Дума!</h6>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% for thank in thanks %}
+                    <div class="w3-container w3-card w3-theme-l3 w3-round w3-margin"><br>
+                        {% if thank.user.user.profile.photo %}
+                        <img src="{{ thank.user.user.profile.photo.url }}" alt="Avatar" class="w3-left w3-circle w3-margin-right"
+                             style="width:60px"/>
+                        {% endif %}
+                        <span class="w3-right w3-opacity">{{ thank.publication_date }}</span>
+                        <h4><a style="text-decoration: none" href="{% url 'profile details' thank.user.user.profile.pk %}"> {{ thank.user.user.username }}</a></h4><br>
+                        <hr class="w3-clear">
+                        <h2>{{ thank.title }}</h2>
+                        <div class="w3-row-padding" style="margin:0 -16px">
+                            <div class="w3-half">
+                            {% if thank.photo %}
+                                <img src="{{ thank.photo.url }}" style="width:100%" alt="Northern Lights"
+                                     class="w3-margin-bottom">
+                            {% endif %}
+                                <a href="{% url 'thanks details' thank.pk %}"
+                                   class="w3-button w3-theme-d2 w3-margin-bottom">Виж повече</a>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                {% endfor %}
+                <!-- End Middle Column -->
+            </div>
+{##}
+{#            <!-- Right Column -->#}
+{#            <div class="w3-col m2">#}
+{#                <div class="w3-card w3-round w3-white w3-center">#}
+{#                    <div class="w3-container">#}
+{#                        {% if last_event %}#}
+{#                        <p>Предстоящи сбирки:</p>#}
+{#                        <img src="{{ last_event.photo.url }}" alt="снимка" style="width:100%;">#}
+{#                        <p><strong>{{ last_event.name }}</strong></p>#}
+{#                        <p>{{ last_event.date }}</p>#}
+{#                        <p>#}
+{#                            <a href="{% url 'event details' last_event.pk %}"#}
+{#                                       class="w3-button w3-theme-d2 w3-margin-bottom">Заповядай</a>#}
+{#                        </p>#}
+{#                            {% else %}#}
+{#                            <p>Няма предстоящи събития</p>#}
+{#                        {% endif %}#}
+{#                    </div>#}
+{#                </div>#}
+{#                <br>#}
+{##}
+{##}
+{##}
+{#                <!-- End Right Column -->#}
+            </div>
+            <!-- End Grid -->
         </div>
-    </div>
-    <p style="margin-bottom:11.5cm;"></p>
+
+        <!-- End Page Container -->
+
 {% endblock %}

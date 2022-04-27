@@ -21,10 +21,14 @@
 
                                 <h2> {{ profile.first_name }} {{ profile.last_name }} </h2>
                                 <br>
-                                <h4> Населено място </h4>
+                            <span class="w3-left w3-opacity">От къде съм</span>
+                                    <br>
+
                                 <p> {{ profile.region }}{% if profile.place %}, {{ profile.place }} {% endif %}</p>
                                 <br>
-                                <h4> Свържи се с мен </h4>
+                              <span class="w3-left w3-opacity">Свържи се с мен</span>
+                                    <br>
+
                                 {% if profile.phone_number %}
                                     <p>{{ profile.phone_number }}</p>
                                 {% endif %}
@@ -36,7 +40,8 @@
 
 
                                 {% if profile.description %}
-                                    <h4> За мен </h4>
+                                    <span class="w3-left w3-opacity">За мен</span>
+                                    <br>
                                     <p>  {{ profile.description }}</p>
                                 {% endif %}
                             <div style="text-align: center">

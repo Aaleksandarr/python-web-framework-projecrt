@@ -7,7 +7,7 @@ from motherearth.web.models import Places
 class CreatePlaceView(auth_mixin.LoginRequiredMixin, views.CreateView):
     model = Places
     template_name = 'places/place_create.html'
-    fields = ('name', 'address', 'description', 'phone_number')
+    fields = ('name', 'categories', 'address', 'description', 'phone_number', 'photo')
     success_url = reverse_lazy('places')
 
     def form_valid(self, form):
@@ -37,7 +37,7 @@ class PlaceDetailsView(auth_mixin.LoginRequiredMixin, views.DetailView):
 class EditPlaceView(auth_mixin.LoginRequiredMixin, views.UpdateView):
     model = Places
     template_name = 'places/place_edit.html'
-    fields = ('name', 'address', 'description', 'phone_number')
+    fields = ('name', 'categories', 'address', 'description', 'phone_number')
 
     def get_success_url(self):
         return reverse_lazy('places')
@@ -60,7 +60,7 @@ class DeletePlaceView(auth_mixin.LoginRequiredMixin, views.DeleteView):
     template_name = 'places/place_delete.html'
 
     def get_success_url(self):
-        return reverse_lazy('market')
+        return reverse_lazy('places')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

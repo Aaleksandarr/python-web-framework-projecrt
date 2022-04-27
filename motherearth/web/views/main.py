@@ -1,7 +1,7 @@
 from django.contrib.auth import mixins as auth_mixin
 from django.shortcuts import redirect, render
 from django.views import generic as views
-from motherearth.web.models import Post, Plants, Type, Kind, Product, Places, Event, Craft, Thanks
+from motherearth.web.models import Post, Plants, Type, Kind, Product, Event, Craft, Thanks, Categories, Places
 
 
 class HomeView(views.TemplateView):
@@ -88,7 +88,7 @@ class ProductsListView(auth_mixin.LoginRequiredMixin, views.ListView):
         if self.request.GET:
             name = list(self.request.GET.values())[1]
             filter_id = Craft.objects.get(name=name).id
-            return Product.objects.filter(craft__id=filter_id).order_by('-publication_date')
+            return Product.objects.filter(craft_id=filter_id).order_by('-publication_date')
         else:
             return Product.objects.all().order_by('-publication_date')
 
@@ -97,7 +97,26 @@ class PlacesListView(auth_mixin.LoginRequiredMixin, views.ListView):
     model = Places
     template_name = 'main/places.html'
     context_object_name = 'places'
-    ordering = ['-publication_date']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        request = self.request
+        category_list = Categories.objects.all()
+        context.update({
+            'request': request,
+            'category_list': category_list,
+        }
+        )
+
+        return context
+
+    # def get_queryset(self):
+    #     if self.request.GET:
+    #         name = list(self.request.GET.values())[1]
+    #         filter_id = Categories.objects.get(title=name).id
+    #         return Places.objects.filter(categories__id=filter_id).order_by('-publication_date')
+    #     else:
+    #         return Places.objects.all().order_by('-publication_date')
 
 
 class EventsListView(auth_mixin.LoginRequiredMixin, views.ListView):

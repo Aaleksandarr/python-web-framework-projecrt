@@ -9,7 +9,7 @@ from motherearth.web.views.posts import CreateDashboardPost, EditDashboardPostVi
     DashboardPostDetailsView, MyPostsView
 from motherearth.web.views.products import CreateProductView, EditProductView, DeleteProductView, ProductDetailsView, \
     MyProductView
-
+from motherearth.web.views.thanks import CreateThanks, ThanksDetailsView, MyThanksView, DeleteThanksView, EditThanksView
 
 urlpatterns = (
     path('', HomeView.as_view(), name='index'),
@@ -52,6 +52,11 @@ urlpatterns = (
     path('event/mine/', MyEventsView.as_view(), name='my events'),
 
     path('thanks/', ThanksListView.as_view(), name='thanks'),
+    path('thanks/create/', CreateThanks.as_view(), name='create thanks'),
+    path('thanks/details/<int:pk>/', ThanksDetailsView.as_view(), name='thanks details'),
+    path('thanks/edit/<int:pk>/', EditThanksView.as_view(), name='edit thanks'),
+    path('thanks/delete/<int:pk>/', DeleteThanksView.as_view(), name='delete thanks'),
+    path('thanks/mine/', MyThanksView.as_view(), name='my thanks'),
 
     path('error', InternalErrorView.as_view(), name='error')
 )

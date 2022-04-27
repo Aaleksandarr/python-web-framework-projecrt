@@ -7,28 +7,28 @@
         <div class="d-inline p-2 w-50">
             <div class="container mb-4">
                 <div class="d-flex justify-content-start mb-5">
-                <h2>Моите обяви</h2>
+                <h2>Моите благодарности</h2>
                 <br>
-                {% if posts %}
-                    {% for post in posts %}
+                {% if thanks %}
+                    {% for thank in thanks %}
                         <div class="horizontalBlocks">
                             <div class="wrap">
-                                <a href="{% url 'post details' post.pk %}">
-                                    <img class="rel" src="{{ post.photo.url }}" style="max-width: 200px;width:100%"
+                                <a href="{% url 'thanks details' thank.pk %}">
+                                    <img class="rel" src="{{ thank.photo.url }}" style="max-width: 200px;width:100%"
                                          alt="снимка"></a>
 
-                                <p>{{ post.title }}</p>
+                                <p>{{ thank.title }}</p>
 
                             </div>
                         </div>
 
                     {% endfor %}
                     {% else %}
-                    <h5>Все още нямаш разкази!</h5>
+                    <h5>Все още нямаш благодарности!</h5>
                 {% endif %}
                 </div>
             </div>
         </div>
     </div>
- <p style="margin-bottom:7cm;"></p>
+ <p style="margin-bottom:10cm;"></p>
 {% endblock %}
