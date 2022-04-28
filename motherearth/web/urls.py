@@ -1,14 +1,14 @@
 from django.urls import path
 from motherearth.web.views.events import CreateEventView, EventDetailsView, EditEventView, DeleteEventView, MyEventsView
 from motherearth.web.views.main import HomeView, DashboardView, CommunityView, MarketListView, InternalErrorView, \
-    ProductsListView, PlacesListView, EventsListView, ThanksListView
-from motherearth.web.views.places import CreatePlaceView, PlaceDetailsView, EditPlaceView, DeletePlaceView, MyPlacesView
+    ProductsListView, EventsListView, ThanksListView, SpotsListView
 from motherearth.web.views.plants import CreatePlantView, MarketPlantsDetailsView, EditMarketPlantView, \
     DeleteMarketPlantView, MyPlantsView
 from motherearth.web.views.posts import CreateDashboardPost, EditDashboardPostView, DeleteDashboardPostView, \
     DashboardPostDetailsView, MyPostsView
 from motherearth.web.views.products import CreateProductView, EditProductView, DeleteProductView, ProductDetailsView, \
     MyProductView
+from motherearth.web.views.spots import CreateSpotView, EditSpotView, DeleteSpotView, MySpotsView, SpotDetailsView
 from motherearth.web.views.thanks import CreateThanks, ThanksDetailsView, MyThanksView, DeleteThanksView, EditThanksView
 
 urlpatterns = (
@@ -37,12 +37,12 @@ urlpatterns = (
     path('product/delete/<int:pk>/', DeleteProductView.as_view(), name='delete product'),
     path('product/mine/', MyProductView.as_view(), name='my products'),
 
-    path('place/', PlacesListView.as_view(), name='places'),
-    path('place/create/', CreatePlaceView.as_view(), name='create place'),
-    path('place/details/<int:pk>/', PlaceDetailsView.as_view(), name='place details'),
-    path('place/edit/<int:pk>/', EditPlaceView.as_view(), name='edit place'),
-    path('place/delete/<int:pk>/', DeletePlaceView.as_view(), name='delete place'),
-    path('place/mine/', MyPlacesView.as_view(), name='my places'),
+    path('spot/', SpotsListView.as_view(), name='spots'),
+    path('spot/create/', CreateSpotView.as_view(), name='create spot'),
+    path('spot/details/<int:pk>/', SpotDetailsView.as_view(), name='spot details'),
+    path('spot/edit/<int:pk>/', EditSpotView.as_view(), name='edit spot'),
+    path('spot/delete/<int:pk>/', DeleteSpotView.as_view(), name='delete spot'),
+    path('spot/mine/', MySpotsView.as_view(), name='my spots'),
 
     path('event/', EventsListView.as_view(), name='events'),
     path('event/create/', CreateEventView.as_view(), name='create event'),

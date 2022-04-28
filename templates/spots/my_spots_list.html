@@ -9,15 +9,15 @@
                 <div class="d-flex justify-content-start mb-5">
                 <h2>Моите обяви</h2>
                 <br>
-                {% if places %}
-                    {% for place in places %}
+                {% if spots %}
+                    {% for spot in spots %}
                         <div class="horizontalBlocks">
                             <div class="wrap">
-                                <a href="{% url 'place details' place.pk %}">
-                                    <img class="rel" src="{{ place.photo.url }}" style="max-width: 200px;width:100%"
+                                <a href="{% url 'spot details' spot.pk %}">
+                                    <img class="rel" src="{{ spot.photo.url }}" style="max-width: 200px;width:100%"
                                          alt="снимка"></a>
 
-                                <p>{{ place.name }}</p>
+                                <p>{{ spot.name }}</p>
 
                             </div>
                         </div>

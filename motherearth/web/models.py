@@ -139,7 +139,7 @@ class Categories(models.Model):
         return f'{self.title}'
 
 
-class Places(models.Model):
+class Spots(models.Model):
     categories = models.ForeignKey(
         Categories,
         on_delete=models.PROTECT,
@@ -162,6 +162,9 @@ class Places(models.Model):
     owner = models.ForeignKey(
         to=Profile,
         on_delete=models.CASCADE,
+    )
+    publication_date = models.DateTimeField(
+        auto_now_add=True,
     )
 
     def __str__(self):

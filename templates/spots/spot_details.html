@@ -7,8 +7,8 @@
 
         <div class="w3-row">
             <div class="w3-col m7">
-                {% if place.photo %}
-                    <img src="{{ place.photo.url }}" alt="Northern Lights" class="w3-margin-bottom" style="width:100%">
+                {% if spot.photo %}
+                    <img src="{{ spot.photo.url }}" alt="Northern Lights" class="w3-margin-bottom" style="width:100%">
                 {% endif %}
             </div>
 
@@ -20,16 +20,16 @@
                         <div class="w3-theme-l3">
                             <div class="w3-container w3-padding">
 
-                                <h2> {{ place.name }} </h2>
-                                <p style="font-style: italic">{{ place.address }}</p>
-                             <p style="font-style: italic">Телефон: {{ place.phone_number }}  </p>
+                                <h2> {{ spot.name }} </h2>
+                                <p style="font-style: italic">{{ spot.address }}</p>
+                             <p style="font-style: italic">Телефон: {{ spot.phone_number }}  </p>
 
                                 <hr class="w3-clear">
                                 <div class="w3-row-padding" style="margin:0 -16px">
-                                    {% if place.description %}
+                                    {% if spot.description %}
                                         <span class="w3-left w3-opacity">Описание</span>
                                         <br>
-                                        <p>{{ place.description }}</p>
+                                        <p>{{ spot.description }}</p>
                                     {% endif %}
 
 
@@ -37,9 +37,9 @@
                                     <span class="w3-left w3-opacity">Домакин</span>
                                     <br>
                                     <br>
-                                    <img src="{{ place.owner.photo.url }}" alt="Avatar"
+                                    <img src="{{ spot.owner.photo.url }}" alt="Avatar"
                                          class="w3-left w3-circle w3-margin-right" style="width:60px">
-                                    <a href="{% url 'profile details' place.owner.user.profile.pk %}"> {{ place.owner.user.username }}</a>
+                                    <a href="{% url 'profile details' spot.owner.user.profile.pk %}"> {{ spot.owner.user.username }}</a>
                                    </div>
 
 
@@ -48,9 +48,9 @@
 
                                 {% if is_owner %}
                                     <div style="text-align: center">
-                                        <a href="{% url 'edit place' place.pk %}"
+                                        <a href="{% url 'edit spot' spot.pk %}"
                                            class="w3-button w3-theme-d2 w3-margin-bottom">Промени</a>
-                                        <a href="{% url 'delete place' place.pk %}"
+                                        <a href="{% url 'delete spot' spot.pk %}"
                                            class="w3-button w3-theme-d2 w3-margin-bottom">Премахни</a>
                                     </div>
                                 {% endif %}

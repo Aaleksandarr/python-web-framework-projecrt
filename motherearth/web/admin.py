@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from motherearth.web.models import Plants, Product, Places, Post, Type, Kind, Event, Craft, Thanks, Categories
+from motherearth.web.models import Plants, Product, Post, Type, Kind, Event, Craft, Thanks, Categories, Spots
 
 
 @admin.register(Plants)
@@ -13,7 +13,7 @@ class ProfileAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Places)
+@admin.register(Spots)
 class ProfileAdmin(admin.ModelAdmin):
     pass
 

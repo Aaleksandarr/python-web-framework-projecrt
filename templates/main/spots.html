@@ -10,11 +10,11 @@
                 <div class="w3-card w3-round">
                     <div class="w3-white">
 
-                        <a class="w3-button w3-block w3-theme-l1 w3-left-align" href="{% url 'create place' %}">
+                        <a class="w3-button w3-block w3-theme-l1 w3-left-align" href="{% url 'create spot' %}">
                             Създай
                             обява </a>
 
-                        <a class="w3-button w3-block w3-theme-l1 w3-left-align" href="{% url 'my places' %}"> Моите
+                        <a class="w3-button w3-block w3-theme-l1 w3-left-align" href="{% url 'my spots' %}"> Моите
                             обяви </a>
 
 
@@ -33,11 +33,11 @@
                 <div class="w3-card w3-round w3-theme-l3 w3-center">
                     <div class="w3-container">
                         <br>
-                        <form action="{% url 'places' %}" method="GET">
+                        <form action="{% url 'spots' %}" method="GET">
                             {% csrf_token %}
                             {% for category in category_list %}
 
-                                <button class="w3-button w3-block w3-theme-l3 w3-center-align" name="place"
+                                <button class="w3-button w3-block w3-theme-l3 w3-center-align" name="spot"
                                         type='{{ category }}' value="{{ category }}">
                                     {{ category }}
                                 </button>
@@ -64,21 +64,21 @@
                     </div>
                 </div>
 
-                {% if places %}
+                {% if spots %}
 
 
                     <div class="w3-container w3-card w3-theme-l3 w3-round w3-margin"><br>
 
                     <br>
-                    {% for place in places %}
+                    {% for spot in spots %}
                         <div class="horizontalBlocks">
                             <div class="wrap">
-                                <a href="{% url 'place details' place.pk %}">
-                                    <img class="rel" src="{{ place.photo.url }}" style="max-width: 200px;width:100%"
+                                <a href="{% url 'spot details' spot.pk %}">
+                                    <img class="rel" src="{{ spot.photo.url }}" style="max-width: 200px;width:100%"
                                          alt="снимка"></a>
 
-                                <h4>{{ place.name }}</h4>
-                                <p style="font-style: italic">{{ place.address }}</p>
+                                <h4>{{ spot.name }}</h4>
+                                <p style="font-style: italic">{{ spot.address }}</p>
                             </div>
                         </div>
 
